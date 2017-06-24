@@ -20,31 +20,33 @@ $(document).ready(function(){
 	var allCategories = {
 
 		science: "https://opentdb.com/api.php?amount=30&category=17&type=multiple", //	30 science questions
-		sport:   "https://opentdb.com/api.php?amount=25&category=21&type=multiple", //	25 sports questions
+		sport:   "https://opentdb.com/api.php?amount=25&category=21&type=multiple", //	25 sport questions
 		games:   "https://opentdb.com/api.php?amount=20&category=15&type=multiple", //	20 video games questions
 		film:    "https://opentdb.com/api.php?amount=15&category=11&type=multiple", //	15 film questions
 		math:    "https://opentdb.com/api.php?amount=11&category=19&type=multiple" //	11 math questions
 	}
 
 	//demo call to practice drilling down into the object
-	$.ajax({
+	// $.ajax({
 
-		// url: "https://opentdb.com/api.php?amount=30&category=17&type=multiple",
-		url: allCategories.film,
-		method: "GET"
+	// 	// url: "https://opentdb.com/api.php?amount=30&category=17&type=multiple",
+	// 	url: allCategories.film,
+	// 	method: "GET"
 
-	}).done(function(response){
-		console.log(response);
-		console.log(response.results);
+	// }).done(function(response){
+	// 	console.log(response);
+	// 	console.log(response.results);
 
-		//set a variable to the number of results
-		var all = response.results.length
-		console.log(all);
+	// 	//set a variable to the number of results
+	// 	var all = response.results.length
+	// 	console.log(all);
 
-		//randomly select one of the results: 0 - (all -1)
-		console.log(response.results[Math.floor(Math.random() * all)]);
+	// 	//randomly select one of the results: 0 - (all -1)
+	// 	console.log(response.results[Math.floor(Math.random() * all)]);
 
-	});
+	// }).fail(function(){
+	// 	console.log("this didn't work");
+	// });
 	//this ^^^ will return random questions from the static url
 
 
@@ -56,24 +58,81 @@ $(document).ready(function(){
 	//		- when an answer is wrong
 
 	function NextQ(){
-		// selects random question
+		// selects random category number from the object
+		var anyCategory = Math.floor(Math.random() * Object.keys(allCategories).length);
+		var oneCategory = ChooseCat(anyCategory);
+
 		$.ajax({
 
 			// call a function that returns one random URL string: WhatQ;
-			url:
+			url: allCategories[oneCategory],
 			method: "GET"
-		})
 
-		// updates the page "theme"
-		// updates the question
-		// updates the answer queue
-		// calls function to reset timer
+		}).done(function(response){
+			// console.log(response);
+			// console.log(response.results);
+
+			event.preventDefault();
+
+			// set a variable to the number of results
+			var all = response.results.length
+
+			// randomly select one of the results: 0 - (all -1)
+			var one = Math.floor(Math.random() * all);
+			var won = response.results[one];
+			// with one object selected, begin updating the page
+			console.log(won);	
+
+				// updates the page "theme"
+				// ------------------------
+				// $('#qTheme').html(response.category + " (" + response.difficulty + ")")
+				// $('#qTheme').html(response.results.category + " (" + response.difficulty + ")")
+				$('#qTheme').html("<h3><strong>" + won.category + "</strong><small> (" + won.difficulty + ")</small></h3>")
+
+				// updates the question
+				$('#question').html("<h2>" +  + "</h2>")
+				// updates the answer queue
+				// calls function to reset timer		
+
+ 
+			//set a variable to the number of results
+			// var all = response.results.length
+			// console.log(all);
+
+			// //randomly select one of the results: 0 - (all -1)
+			// console.log(response.results[Math.floor(Math.random() * all)]);
+
+		}).fail(function(){
+			console.log("this didn't work");
+		});
 
 	}
 
+	NextQ();
+
+	function ChooseCat(nim){
+		//instead of multiple ifs, use a switch (select-case) statement
+		//one of these pairs will be used to display an array
+		switch(nim){
+			case 0:
+				return "science";
+			case 1:
+				return "sport";
+			case 2:
+				return "games";
+			case 3:
+				return "film";
+			case 4:
+				return "math";
+			default:
+				return;
+			}
+	}
 
 
-
+	// console.log(Object.keys(allCategories));
+	// console.log(Object.keys(allCategories).length);
+	// console.log(allCategories.length);
 
 
 });
