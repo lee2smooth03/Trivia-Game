@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Week 05 HW: Trivia Game</title>
+
+	<!-- styles: clear the browser, link to Bootstrap, then link my page -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- my styles -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<!-- link to jQuery -->
+	<!-- link to jQuery and my personal .js file(s) -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+
+</head>
+<body>
+
+	<!-- open a container div -->
+	<div class="container">
+		
+		<!-- use a jumbotron to head the page -->
+			<!-- add two buttons to the tron: -->
+				<!-- "Start Game" -->
+				<!-- "Brand New"  -->
+	
+				<div class="jumbotron">
+  					<h1>Welcome to the Bootcamp Game:</h1>
+	  				<h1><small>Random Trivia!</small></h1>
+
+  					<p>
+  						<a id="NewGame" class="btn btn-primary btn-lg jmbtn" href="#" role="button">New Game</a>
+  						<a id="ResetMe" class="btn btn-primary btn-lg jmbtn" href="#" role="button">Reset Me</a>
+  					</p>
+
+  					<!-- <p>Rules: Guess Correctly!</p> -->
+				</div>
+
+
+		<!-- add new row that contains the question -->
+			<!-- questions -->
+				<div class="row">
+
+					<div class="col-md-12">
+						<div><h3>Theme: <span>Theme</span></h3></div>
+						<div class="well well-lg" id="question"></div>
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<!-- answers panel -->
+					<div class="col-md-8">
+						
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Select One</h3>
+						  </div>
+
+						  <div class="panel-body">
+						    Panel content
+						  </div>
+						</div>
+
+					</div>
+
+					<!-- timer -->
+					<div class="col-md-2">
+
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Timer</h3>
+						  </div>
+
+						  <div class="panel-body">
+						    Panel content
+						  </div>
+						</div>
+						
+					</div>
+
+					<!-- score -->
+					<div class="col-md-2">
+
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Score</h3>
+						  </div>
+
+						  <div class="panel-body">
+						    Panel content
+						  </div>
+						</div>
+						
+					</div>
+
+				</div>
+
+
+	</div> <!-- container div -->
+
+
+</body>
+</html>
