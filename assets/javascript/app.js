@@ -90,7 +90,8 @@ $(document).ready(function(){
 				$('#qTheme').html("<h3><strong>" + won.category + "</strong><small> (" + won.difficulty + ")</small></h3>")
 
 				// updates the question
-				$('#question').html("<h2>" +  + "</h2>")
+				// $('#qField').html("<h2>" + won.question + "</h2>");
+				$('#qField').html("<h2>" + won["question"] + "</h2>");
 				// updates the answer queue
 				// calls function to reset timer		
 
